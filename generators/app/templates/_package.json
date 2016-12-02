@@ -1,0 +1,48 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.1",
+  "description": "Parse server",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "node app/index.js",
+    "migrate": "node tools/migrate_schema",
+    "dev": "nodemon app/index.js",
+    "lint": "eslint . --ignore-path .gitignore",
+    "pretest": "npm run lint",
+    "test": "NODE_ENV=test TESTING=1 istanbul cover --include-all-sources -x **/spec/** jasmine",
+    "single-test": "NODE_ENV=test TESTING=1 jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+<%= repoUrl %>"
+  },
+  "author": "<%= author %>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "async": "^1.5.2",
+    "colors": "^1.1.2",
+    "cron": "^1.1.0",
+    "express": "^4.14.0",
+    "moment": "^2.13.0",
+    "parse": "^1.9.2",
+    "parse-dashboard": "^1.0.21",
+    "parse-server": "^2.2.25",
+    "parse-server-simple-mailgun-adapter": "^1.0.0",
+    "request": "^2.72.0"
+  },
+  "engines": {
+    "node": ">=4.3"
+  },
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "eslint-config": "^0.3.0",
+    "eslint-config-defaults": "^9.0.0",
+    "istanbul": "^0.4.3",
+    "jasmine": "^2.4.1",
+    "jasmine-console-reporter": "^1.2.4",
+    "jasmine-reporters": "^2.1.1",
+    "nodemon": "^1.9.2",
+    "rewire": "^2.5.1",
+    "validator": "^5.2.0"
+  }
+}

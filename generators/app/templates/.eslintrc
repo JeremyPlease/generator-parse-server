@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
+  "extends": [
+    "defaults"
+  ],
+  "rules": {
+    "no-console": "off",
+    "comma-dangle": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "none",
+        "caughtErrorsIgnorePattern": "^console"
+      }
+    ]
+  },
+  "globals": {
+    "console": false,
+    "Parse": false,
+    "appRoot": false
+  }
+}

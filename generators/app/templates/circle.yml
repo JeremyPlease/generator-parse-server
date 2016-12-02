@@ -1,0 +1,25 @@
+machine:
+  node:
+    version: 5.5.0
+dependencies:
+  pre:
+    - pip install awsebcli==3.7.4
+  override:
+    - npm install
+  cache_directories:
+    - "node_modules"
+test:
+  post:
+    - cp -R coverage/* $CIRCLE_ARTIFACTS
+deployment:
+  staging:
+    branch: staging
+    commands:
+      - bash ./deploy/setup-eb.sh
+      - eb deploy <%= name %>-staging
+  master:
+    branch: master
+    commands:
+      - bash ./deploy/setup-eb.sh
+      - eb deploy <%= name %>-production:
+          timeout: 1800
