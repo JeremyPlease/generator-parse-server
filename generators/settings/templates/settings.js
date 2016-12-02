@@ -22,9 +22,9 @@ var settings = {
     },
     <% if (setupS3) { %>
     filesAdapter: new S3Adapter(
-      "<%= awsId %>",
-      "<%= awsSecretKey %>",
-      "<%= awsBucketName %>",
+      process.env.AWS_ID || "<%= awsId %>",
+      process.env.AWS_SECRET_KEY || "<%= awsSecretKey %>",
+      process.env.AWS_BUCKET_NAME || "<%= awsBucketName %>",
       {directAccess: <%= !!directAccess %>}
     ),
     <% } %>
@@ -32,9 +32,9 @@ var settings = {
     emailAdapter: {
       module: 'parse-server-simple-mailgun-adapter',
       options: {
-        apiKey: "<%= mailgunKey %>",
-        domain: "<%= mailgunDomain %>",
-        fromAddress: "<%= mailgunFromAddress %>"
+        apiKey: process.env.MAILGUN_KEY || "<%= mailgunKey %>",
+        domain: process.env.MAILGUN_DOMAIN || "<%= mailgunDomain %>",
+        fromAddress: process.env.MAILGUN_FROM_ADDRESS || "<%= mailgunFromAddress %>"
       }
     },
     <% } %>
